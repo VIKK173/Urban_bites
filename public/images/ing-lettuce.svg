@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- ruffled lettuce leaf -->
+  <path d="M100 24 Q64 18 46 44 Q22 52 20 84 Q8 108 30 130 Q32 158 66 160 Q88 180 116 166 Q150 172 162 142 Q184 128 172 100 Q180 70 150 60 Q136 30 100 24 Z"
+        fill="#59c94f" stroke="#2f7d32" stroke-width="5"/>
+  <g fill="#8ade7a" stroke="#2f7d32" stroke-width="3" stroke-linecap="round">
+    <path d="M56 60 Q78 54 88 76 Q64 86 56 60 Z"/>
+    <path d="M108 44 Q132 44 136 68 Q110 76 108 44 Z"/>
+    <path d="M140 92 Q158 104 146 126 Q126 118 140 92 Z"/>
+    <path d="M92 92 Q116 88 124 112 Q96 124 92 92 Z"/>
+    <path d="M52 108 Q66 130 92 138 Q78 158 56 146 Q40 132 52 108 Z"/>
+  </g>
+  <path d="M70 70 Q96 96 118 130" fill="none" stroke="#b6ec9c" stroke-width="9" stroke-linecap="round" opacity="0.8"/>
+</svg>

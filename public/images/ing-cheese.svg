@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- bent cheese slice with holes and a drip -->
+  <path d="M28 88 L92 44 L176 76 L168 128 L40 140 Z" fill="#ffb830" stroke="#e89a12" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M92 44 L110 40 L188 70 L176 76 Z" fill="#ffd76e"/>
+  <path d="M52 92 Q50 110 58 112 Q68 114 66 96 Z" fill="#f6a51c"/>
+  <path d="M100 74 Q98 92 106 94 Q116 96 114 78 Z" fill="#f6a51c"/>
+  <path d="M136 92 Q134 110 142 112 Q152 114 150 96 Z" fill="#f6a51c"/>
+  <path d="M150 128 Q152 168 138 178 Q126 184 128 168 Q130 152 136 146 Z" fill="#ffb830" stroke="#e89a12" stroke-width="4" stroke-linejoin="round"/>
+</svg>

@@ -1,0 +1,300 @@
+// Urban Bites — Prisma schema (SQLite)
+// NOTE: SQLite has no Decimal/Enum support in Prisma, so monetary values are
+// stored as integer paise (₹1.00 = 100) and enum-like fields are Strings
+// validated in application code. This is the industry-standard approach that
+// eliminates floating point rounding errors in price calculations.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ============================== USERS ==============================
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  phone        String?
+  role         String   @default("CUSTOMER") // CUSTOMER | ADMIN
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  addresses  Address[]
+  orders     Order[]
+  reviews    Review[]
+  favorites  Favorite[]
+  cartItems  CartItem[]
+  coupons    Coupon[]   @relation("CouponCreator")
+}
+
+model Address {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  label     String   @default("Home")
+  fullText  String
+  city      String
+  state     String
+  pincode   String
+  phone     String
+  isDefault Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+}
+
+// ============================== CATALOG ==============================
+
+model Category {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String?
+  image       String?
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+
+  products Product[]
+
+  @@index([sortOrder])
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  slug        String   @unique
+  description String
+  price       Int // paise
+  comparePrice Int? // paise — original price when discounted
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
+  image       String?
+  isVeg       Boolean  @default(true)
+  spiceLevel  Int      @default(0) // 0-3
+  ingredients String   @default("[]") // JSON string array
+  allergens   String   @default("[]") // JSON string array
+  options     String   @default("[]") // JSON customization groups [{name,required,choices:[{label,price}]}]
+  rating      Float    @default(0)
+  ratingCount Int      @default(0)
+  isAvailable Boolean  @default(true)
+  isFeatured  Boolean  @default(false)
+  soldCount   Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  images     ProductImage[]
+  cartItems  CartItem[]
+  orderItems OrderItem[]
+  reviews    Review[]
+  favorites  Favorite[]
+
+  @@index([categoryId])
+  @@index([isAvailable])
+  @@index([isFeatured])
+  @@index([rating])
+  @@index([price])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  url       String
+  alt       String?
+  sortOrder Int     @default(0)
+
+  @@index([productId])
+}
+
+// ============================== CART ==============================
+
+model CartItem {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId   String
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  quantity    Int      @default(1)
+  options     String   @default("[]") // JSON [{label,price}]
+  optionsHash String   @default("") // hash for grouping identical customizations
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, productId, optionsHash])
+  @@index([userId])
+}
+
+// ============================== ORDERS ==============================
+
+model Order {
+  id            String    @id @default(cuid())
+  orderNumber   String    @unique
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  status        String    @default("PLACED") // PLACED|CONFIRMED|PREPARING|READY|OUT_FOR_DELIVERY|DELIVERED|CANCELLED
+  paymentStatus String    @default("PENDING") // PENDING|PAID|FAILED|REFUNDED|COD_PENDING
+  paymentMethod String    @default("RAZORPAY") // RAZORPAY|COD
+  subtotal      Int // paise
+  discount      Int       @default(0)
+  deliveryFee   Int       @default(0)
+  tax           Int       @default(0)
+  total         Int // paise
+  couponCode    String?
+  address       String // JSON address snapshot
+  contactName   String
+  contactPhone  String
+  instructions  String?
+  etaMinutes    Int       @default(35)
+  cancelReason  String?
+  placedAt      DateTime  @default(now())
+  deliveredAt   DateTime?
+  cancelledAt   DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  items    OrderItem[]
+  payments Payment[]
+
+  @@index([userId])
+  @@index([status])
+  @@index([createdAt])
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String?
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
+  // snapshots keep historical orders accurate after menu changes
+  name      String
+  image     String?
+  unitPrice Int // paise
+  quantity  Int
+  options   String   @default("[]") // JSON
+  lineTotal Int // paise
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+model Payment {
+  id                String   @id @default(cuid())
+  orderId           String
+  order             Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  provider          String   @default("RAZORPAY") // RAZORPAY | RAZORPAY_DEV
+  providerOrderId   String?
+  providerPaymentId String?
+  signature         String?
+  amount            Int // paise
+  currency          String   @default("INR")
+  status            String   @default("CREATED") // CREATED|PAID|FAILED|REFUNDED
+  method            String?
+  idempotencyKey    String   @unique
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  @@index([orderId])
+  @@index([status])
+}
+
+// ============================== MARKETING / ENGAGEMENT ==============================
+
+model Coupon {
+  id            String    @id @default(cuid())
+  code          String    @unique
+  description   String?
+  type          String // PERCENT | FLAT
+  value         Int // percent (1-100) or paise
+  minOrderValue Int       @default(0) // paise
+  maxDiscount   Int? // paise cap for PERCENT
+  isActive      Boolean   @default(true)
+  validFrom     DateTime  @default(now())
+  validUntil    DateTime?
+  usageLimit    Int?
+  usedCount     Int       @default(0)
+  createdById   String?
+  createdBy     User?     @relation("CouponCreator", fields: [createdById], references: [id], onDelete: SetNull)
+  createdAt     DateTime  @default(now())
+
+  @@index([isActive])
+}
+
+model Review {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  orderId   String?
+  rating    Int
+  title     String?
+  comment   String
+  isApproved Boolean @default(true)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([productId])
+}
+
+model Favorite {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+
+  @@unique([userId, productId])
+  @@index([userId])
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  userId    String?
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([isRead])
+}
+
+// Singleton settings row (id = "main")
+model RestaurantSettings {
+  id                    String   @id @default("main")
+  deliveryFee           Int      @default(3900) // paise ₹39
+  freeDeliveryThreshold Int      @default(59900) // paise ₹599
+  taxPercent            Float    @default(5) // GST %
+  codEnabled            Boolean  @default(true)
+  etaMinutes            Int      @default(35)
+  offerTitle            String   @default("FLAT 20% OFF")
+  offerText             String   @default("Use code URBAN20 on your first order and get flat 20% off up to ₹150.")
+  offerCode             String   @default("URBAN20")
+  offerDiscount         Int      @default(20)
+  offerActive           Boolean  @default(true)
+  address               String   @default("Shop 12, Food Street, Bandra West, Mumbai 400050")
+  phone                 String   @default("+91 98765 43210")
+  email                 String   @default("hello@urbanbites.example")
+  openHours             String   @default("Mon–Sun · 11:00 AM – 11:30 PM")
+  mapLat                Float    @default(19.0596)
+  mapLng                Float    @default(72.8295)
+  updatedAt             DateTime @updatedAt
+}

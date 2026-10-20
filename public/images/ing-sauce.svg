@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- swirling sauce splash -->
+  <path d="M104 22 Q150 34 142 66 Q138 88 108 92 Q132 100 148 88 Q172 74 168 100 Q164 134 128 138 Q96 142 92 116 Q90 138 112 152 Q140 170 112 180 Q72 190 52 156 Q34 124 62 104 Q38 100 34 76 Q30 42 72 32 Q88 18 104 22 Z"
+        fill="#e5303f" stroke="#b31f2e" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M84 58 Q104 50 120 62 Q116 84 92 84 Q72 82 84 58 Z" fill="#ff7a63"/>
+  <circle cx="70" cy="40" r="7" fill="#e5303f"/>
+  <circle cx="158" cy="52" r="5" fill="#e5303f"/>
+  <circle cx="36" cy="150" r="6" fill="#e5303f"/>
+  <circle cx="160" cy="160" r="5" fill="#e5303f"/>
+</svg>
