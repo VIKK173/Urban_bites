@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { useHashRoute } from '@/hooks/useHashRoute'
 import { useAuthStore } from '@/store/auth-store'
 import { useCartStore } from '@/store/cart-store'
@@ -41,7 +41,8 @@ export default function UrbanBitesApp() {
   const seg = route.segments
   let page: React.ReactNode
 
-  if (seg.length === 0) page = <HomePage />
+  if (!route.ready) page = null
+  else if (seg.length === 0) page = <HomePage />
   else if (seg[0] === 'menu') page = <MenuPage query={route.query} />
   else if (seg[0] === 'product' && seg[1]) page = <ProductPage slugOrId={seg[1]} />
   else if (seg[0] === 'cart') page = <CartPage />
@@ -63,17 +64,17 @@ export default function UrbanBitesApp() {
     <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <main className="flex-1">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={route.raw.split('?')[0]}
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.22, ease: 'easeOut' }}
-          >
-            {page}
-          </motion.div>
-        </AnimatePresence>
+        {/* Enter-fade only: AnimatePresence mode="wait" requires the old page's
+            exit animation to finish before the new page mounts, which can hang
+            and leave the previous page stuck on screen. */}
+        <motion.div
+          key={route.raw.split('?')[0]}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.22, ease: 'easeOut' }}
+        >
+          {page}
+        </motion.div>
       </main>
       {!bare && <Footer />}
     </div>

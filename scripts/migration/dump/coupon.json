@@ -1,0 +1,50 @@
+[
+  {
+    "id": "cmvgdtqas002nko9d7gapytwa",
+    "code": "WELCOME50",
+    "description": "Flat ₹50 off on orders above ₹299",
+    "type": "FLAT",
+    "value": 5000,
+    "minOrderValue": 29900,
+    "maxDiscount": null,
+    "isActive": true,
+    "validFrom": "2026-10-20T07:49:03.461Z",
+    "validUntil": null,
+    "usageLimit": null,
+    "usedCount": 0,
+    "createdById": "cmvgdtq9l0000ko9dh72wwz5f",
+    "createdAt": "2026-10-20T07:49:03.461Z"
+  },
+  {
+    "id": "cmvgdtqas002oko9dwbfijdkd",
+    "code": "URBAN20",
+    "description": "20% off up to ₹150 on orders above ₹399",
+    "type": "PERCENT",
+    "value": 20,
+    "minOrderValue": 39900,
+    "maxDiscount": 15000,
+    "isActive": true,
+    "validFrom": "2026-10-20T07:49:03.461Z",
+    "validUntil": null,
+    "usageLimit": null,
+    "usedCount": 9,
+    "createdById": "cmvgdtq9l0000ko9dh72wwz5f",
+    "createdAt": "2026-10-20T07:49:03.461Z"
+  },
+  {
+    "id": "cmvgdtqas002pko9dn0ip1vj8",
+    "code": "FLAT100",
+    "description": "Flat ₹100 off on orders above ₹499",
+    "type": "FLAT",
+    "value": 10000,
+    "minOrderValue": 49900,
+    "maxDiscount": null,
+    "isActive": true,
+    "validFrom": "2026-10-20T07:49:03.461Z",
+    "validUntil": null,
+    "usageLimit": null,
+    "usedCount": 0,
+    "createdById": "cmvgdtq9l0000ko9dh72wwz5f",
+    "createdAt": "2026-10-20T07:49:03.461Z"
+  }
+]

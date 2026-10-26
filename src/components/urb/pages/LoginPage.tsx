@@ -90,12 +90,6 @@ export default function LoginPage() {
           <Link href="#/register" className="text-primary font-semibold hover:underline">Create an account</Link>
         </p>
       </div>
-
-      <div className="mt-4 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-xs text-neutral-500 leading-relaxed">
-        <p className="font-semibold text-neutral-400">Demo accounts (seeded for evaluation)</p>
-        <p className="mt-1.5">Customer — <code className="text-neutral-300">priya@example.com</code> / <code className="text-neutral-300">Customer@123</code></p>
-        <p>Admin — <code className="text-neutral-300">admin@urbanbites.com</code> / <code className="text-neutral-300">Admin@1234</code></p>
-      </div>
     </div>
   )
 }

@@ -1,0 +1,41 @@
+[
+  {
+    "id": "cmvgdtq9p0004ko9dw1ey3ae0",
+    "userId": "cmvgdtq9n0001ko9d20qnfx53",
+    "label": "Home",
+    "fullText": "B-702, Sunrise Apartments, Linking Road",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pincode": "400050",
+    "phone": "+91 90000 00002",
+    "isDefault": true,
+    "createdAt": "2026-10-20T07:49:03.421Z",
+    "updatedAt": "2026-10-20T07:49:03.421Z"
+  },
+  {
+    "id": "cmvgdtq9p0005ko9d3nenghyo",
+    "userId": "cmvgdtq9n0001ko9d20qnfx53",
+    "label": "Work",
+    "fullText": "4th Floor, Prism Tower, Andheri East",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pincode": "400069",
+    "phone": "+91 90000 00002",
+    "isDefault": false,
+    "createdAt": "2026-10-20T07:49:03.421Z",
+    "updatedAt": "2026-10-20T07:49:03.421Z"
+  },
+  {
+    "id": "cmvgdtq9p0006ko9d44adqbxo",
+    "userId": "cmvgdtq9n0002ko9dfep3rv19",
+    "label": "Home",
+    "fullText": "12, Palm Grove, Carter Road",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "pincode": "400050",
+    "phone": "+91 90000 00003",
+    "isDefault": true,
+    "createdAt": "2026-10-20T07:49:03.421Z",
+    "updatedAt": "2026-10-20T07:49:03.421Z"
+  }
+]

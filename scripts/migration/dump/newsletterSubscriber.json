@@ -1,0 +1,32 @@
+[
+  {
+    "id": "cmvgdtqb2003eko9d4h854lh5",
+    "email": "priya@example.com",
+    "createdAt": "2026-10-20T07:49:03.470Z"
+  },
+  {
+    "id": "cmvgdtqb2003fko9dq2mjpfpn",
+    "email": "arjun@example.com",
+    "createdAt": "2026-10-20T07:49:03.470Z"
+  },
+  {
+    "id": "cmvgg54us0010kowup8nhsbcj",
+    "email": "news-rvj8hv@test.com",
+    "createdAt": "2026-10-20T08:53:54.773Z"
+  },
+  {
+    "id": "cmvgg6bjj002akowuwpgb0exx",
+    "email": "news-c1n5vr@test.com",
+    "createdAt": "2026-10-20T08:54:50.095Z"
+  },
+  {
+    "id": "cmvgha3j5003skowu6ykn8e8j",
+    "email": "news-2u9nm2@test.com",
+    "createdAt": "2026-10-20T09:25:45.954Z"
+  },
+  {
+    "id": "cmvghevuq0052kowu4og4vdfd",
+    "email": "news-nkd9sn@test.com",
+    "createdAt": "2026-10-20T09:29:29.283Z"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "id": "main",
+    "deliveryFee": 3900,
+    "freeDeliveryThreshold": 59900,
+    "taxPercent": 5,
+    "codEnabled": true,
+    "etaMinutes": 35,
+    "offerTitle": "FLAT 20% OFF",
+    "offerText": "Craving something bold? Use code URBAN20 and get flat 20% off up to ₹150 on orders above ₹399.",
+    "offerCode": "URBAN20",
+    "offerDiscount": 20,
+    "offerActive": true,
+    "address": "Shop 12, Food Street, Bandra West, Mumbai 400050",
+    "phone": "+91 98765 43210",
+    "email": "hello@urbanbites.example",
+    "openHours": "Mon–Sun · 11:00 AM – 11:30 PM",
+    "mapLat": 19.0596,
+    "mapLng": 72.8295,
+    "updatedAt": "2026-10-20T07:49:03.462Z"
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "id": "cmvgdtq9q0007ko9daz8jlte4",
+    "name": "Burgers",
+    "slug": "burgers",
+    "description": "Flame-grilled patties stacked with bold sauces",
+    "image": "/images/cat-burgers.png",
+    "sortOrder": 1,
+    "createdAt": "2026-10-20T07:49:03.422Z"
+  },
+  {
+    "id": "cmvgdtq9q0008ko9dl2whetr5",
+    "name": "Pizza",
+    "slug": "pizza",
+    "description": "Wood-fired crusts with molten cheese",
+    "image": "/images/cat-pizza.png",
+    "sortOrder": 2,
+    "createdAt": "2026-10-20T07:49:03.423Z"
+  },
+  {
+    "id": "cmvgdtq9r0009ko9dhqbs3xjq",
+    "name": "Fried Chicken",
+    "slug": "fried-chicken",
+    "description": "Crunchy, juicy, dangerously spiced",
+    "image": "/images/cat-chicken.png",
+    "sortOrder": 3,
+    "createdAt": "2026-10-20T07:49:03.423Z"
+  },
+  {
+    "id": "cmvgdtq9r000ako9d9cy046ed",
+    "name": "Wraps",
+    "slug": "wraps",
+    "description": "Grilled tortillas rolled around smoky fillings",
+    "image": "/images/cat-wraps.png",
+    "sortOrder": 4,
+    "createdAt": "2026-10-20T07:49:03.424Z"
+  },
+  {
+    "id": "cmvgdtq9s000bko9duxf4l7z6",
+    "name": "Pasta",
+    "slug": "pasta",
+    "description": "Silky alfredo and fiery arrabbiata",
+    "image": "/images/cat-pasta.png",
+    "sortOrder": 5,
+    "createdAt": "2026-10-20T07:49:03.424Z"
+  },
+  {
+    "id": "cmvgdtq9s000cko9divjayydp",
+    "name": "Desserts",
+    "slug": "desserts",
+    "description": "Molten, creamy, utterly indulgent",
+    "image": "/images/cat-desserts.png",
+    "sortOrder": 6,
+    "createdAt": "2026-10-20T07:49:03.424Z"
+  },
+  {
+    "id": "cmvgdtq9s000dko9d1k6mn90y",
+    "name": "Drinks",
+    "slug": "drinks",
+    "description": "Frosty coolers and thick shakes",
+    "image": "/images/cat-drinks.png",
+    "sortOrder": 7,
+    "createdAt": "2026-10-20T07:49:03.425Z"
+  },
+  {
+    "id": "cmvgdtq9u000eko9dvat6mgjd",
+    "name": "Combos",
+    "slug": "combos",
+    "description": "Full meals priced for the hungry",
+    "image": "/images/cat-combos.png",
+    "sortOrder": 8,
+    "createdAt": "2026-10-20T07:49:03.426Z"
+  }
+]

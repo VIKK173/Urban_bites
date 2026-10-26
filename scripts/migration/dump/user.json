@@ -1,0 +1,62 @@
+[
+  {
+    "id": "cmvgdtq9l0000ko9dh72wwz5f",
+    "name": "Urban Admin",
+    "email": "admin@urbanbites.com",
+    "passwordHash": "$2b$10$nabEHvY/kt9lcjtHhEaSluIGoTAJYi9dVnffQH/nWVI84s20iWoK6",
+    "phone": "+91 90000 00001",
+    "role": "ADMIN",
+    "createdAt": "2026-10-20T07:49:03.418Z",
+    "updatedAt": "2026-10-20T07:49:03.418Z"
+  },
+  {
+    "id": "cmvgdtq9n0001ko9d20qnfx53",
+    "name": "Priya Sharma",
+    "email": "priya@example.com",
+    "passwordHash": "$2b$10$lCAz8xDlTvArgdCN2Yoya.9iuIrEnO2F2Z8qnuy2CrbPpaHvFTkR2",
+    "phone": "+91 90000 00002",
+    "role": "CUSTOMER",
+    "createdAt": "2026-10-20T07:49:03.419Z",
+    "updatedAt": "2026-10-20T07:49:03.419Z"
+  },
+  {
+    "id": "cmvgdtq9n0002ko9dfep3rv19",
+    "name": "Arjun Mehta",
+    "email": "arjun@example.com",
+    "passwordHash": "$2b$10$lCAz8xDlTvArgdCN2Yoya.9iuIrEnO2F2Z8qnuy2CrbPpaHvFTkR2",
+    "phone": "+91 90000 00003",
+    "role": "CUSTOMER",
+    "createdAt": "2026-10-20T07:49:03.420Z",
+    "updatedAt": "2026-10-20T07:49:03.420Z"
+  },
+  {
+    "id": "cmvgdtq9o0003ko9dy2qmmmxu",
+    "name": "Sara Khan",
+    "email": "sara@example.com",
+    "passwordHash": "$2b$10$lCAz8xDlTvArgdCN2Yoya.9iuIrEnO2F2Z8qnuy2CrbPpaHvFTkR2",
+    "phone": "+91 90000 00004",
+    "role": "CUSTOMER",
+    "createdAt": "2026-10-20T07:49:03.421Z",
+    "updatedAt": "2026-10-20T07:49:03.421Z"
+  },
+  {
+    "id": "cmvgha267002jkowuxr3l9w4g",
+    "name": "Test Runner 2u9nm2",
+    "email": "runner-2u9nm2@test.com",
+    "passwordHash": "$2b$10$BnrRHDzsMXAHQTWz0x0USutVJ8BNSrqP1GXLQ8/D4WZnv9uVCQ172",
+    "phone": "9876543210",
+    "role": "CUSTOMER",
+    "createdAt": "2026-10-20T09:25:44.191Z",
+    "updatedAt": "2026-10-20T09:25:44.191Z"
+  },
+  {
+    "id": "cmvghetwl003tkowuga39sv6m",
+    "name": "Test Runner nkd9sn",
+    "email": "runner-nkd9sn@test.com",
+    "passwordHash": "$2b$10$apbCMStgJE8fr7AfTFPS.uXTOfeI2thCKrfHe/XwcZz02ZwWcWM7u",
+    "phone": "9876543210",
+    "role": "CUSTOMER",
+    "createdAt": "2026-10-20T09:29:26.758Z",
+    "updatedAt": "2026-10-20T09:29:26.758Z"
+  }
+]

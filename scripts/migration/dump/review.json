@@ -1,0 +1,134 @@
+[
+  {
+    "id": "cmvgdtqau002rko9dd47b8tee",
+    "userId": "cmvgdtq9n0001ko9d20qnfx53",
+    "productId": "cmvgdtq9y000kko9d40khu5ua",
+    "orderId": null,
+    "rating": 5,
+    "title": "Absolute fire 🔥",
+    "comment": "The double patty with peri sauce is lethal in the best way. Arrived hot in 28 minutes.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.463Z"
+  },
+  {
+    "id": "cmvgdtqav002tko9de24yu6lj",
+    "userId": "cmvgdtq9n0002ko9dfep3rv19",
+    "productId": "cmvgdtq9y000kko9d40khu5ua",
+    "orderId": null,
+    "rating": 5,
+    "title": "Best burger in town",
+    "comment": "Cheese pull was unreal. Packaging kept everything intact, zero sogginess.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.463Z"
+  },
+  {
+    "id": "cmvgdtqaw002vko9dbjp74y3w",
+    "userId": "cmvgdtq9o0003ko9dy2qmmmxu",
+    "productId": "cmvgdtq9y000kko9d40khu5ua",
+    "orderId": null,
+    "rating": 4,
+    "title": "Spicy but balanced",
+    "comment": "Great heat without killing flavour. Would love slightly more sauce on the side.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.464Z"
+  },
+  {
+    "id": "cmvgdtqax002xko9dey8ozj3e",
+    "userId": "cmvgdtq9n0001ko9d20qnfx53",
+    "productId": "cmvgdtqa80018ko9dk44ava1u",
+    "orderId": null,
+    "rating": 5,
+    "title": "Crunch that echoes",
+    "comment": "The crust actually shatters. Eight pieces were gone before the game started.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.465Z"
+  },
+  {
+    "id": "cmvgdtqax002zko9dny4vnugz",
+    "userId": "cmvgdtq9n0002ko9dfep3rv19",
+    "productId": "cmvgdtqa80018ko9dk44ava1u",
+    "orderId": null,
+    "rating": 4,
+    "title": "Worth every rupee",
+    "comment": "Juicy inside, crispy outside. Fiery peri variant is genuinely spicy.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.466Z"
+  },
+  {
+    "id": "cmvgdtqay0031ko9d4txvtmzv",
+    "userId": "cmvgdtq9o0003ko9dy2qmmmxu",
+    "productId": "cmvgdtqaj001wko9d127jeurq",
+    "orderId": null,
+    "rating": 5,
+    "title": "Molten perfection",
+    "comment": "That centre flows like a waterfall. Order two, trust me.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.466Z"
+  },
+  {
+    "id": "cmvgdtqay0033ko9d9sbr038u",
+    "userId": "cmvgdtq9n0001ko9d20qnfx53",
+    "productId": "cmvgdtqan0028ko9dvue1i5rf",
+    "orderId": null,
+    "rating": 5,
+    "title": "Thick like a dessert",
+    "comment": "Barely fits the straw — exactly how a shake should be.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.467Z"
+  },
+  {
+    "id": "cmvgdtqaz0035ko9dq07i2ujv",
+    "userId": "cmvgdtq9n0002ko9dfep3rv19",
+    "productId": "cmvgdtqa60010ko9dgejf9a73",
+    "orderId": null,
+    "rating": 5,
+    "title": "Pepperoni cups!",
+    "comment": "Crispy pepperoni edges full of flavour. 12 inch fed me twice.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.467Z"
+  },
+  {
+    "id": "cmvgdtqaz0037ko9dlhlvjvuu",
+    "userId": "cmvgdtq9o0003ko9dy2qmmmxu",
+    "productId": "cmvgdtqab001gko9d7jslkv6g",
+    "orderId": null,
+    "rating": 4,
+    "title": "Smoky and fresh",
+    "comment": "Paneer was charred beautifully, mint chutney brightened everything up.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.468Z"
+  },
+  {
+    "id": "cmvgdtqb00039ko9di0u74ard",
+    "userId": "cmvgdtq9n0001ko9d20qnfx53",
+    "productId": "cmvgdtqaq002gko9dhlzeajmv",
+    "orderId": null,
+    "rating": 5,
+    "title": "Killer value",
+    "comment": "Burger + fries + shake under ₹450 can’t be beaten.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.468Z"
+  },
+  {
+    "id": "cmvgdtqb0003bko9dt4tqbejn",
+    "userId": "cmvgdtq9n0002ko9dfep3rv19",
+    "productId": "cmvgdtqa5000wko9d31odzuou",
+    "orderId": null,
+    "rating": 4,
+    "title": "Simple done right",
+    "comment": "Char on the crust, fresh basil. A perfect comfort pizza.",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.469Z"
+  },
+  {
+    "id": "cmvgdtqb1003dko9dajxft912",
+    "userId": "cmvgdtq9o0003ko9dy2qmmmxu",
+    "productId": "cmvgdtqa0000oko9dwlh4cc93",
+    "orderId": null,
+    "rating": 4,
+    "title": "Crispy and juicy",
+    "comment": "The glaze clings to every bite. Ask for extra napkins!",
+    "isApproved": true,
+    "createdAt": "2026-10-20T07:49:03.469Z"
+  }
+]
