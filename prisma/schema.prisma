@@ -1,4 +1,4 @@
-// Urban Bites — Prisma schema (MongoDB)
+// Urban Bites — Prisma schema (MySQL)
 // NOTE: monetary values are stored as integer paise (₹1.00 = 100) and
 // enum-like fields are Strings validated in application code. This
 // eliminates floating point rounding errors in price calculations.
@@ -8,14 +8,14 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 // ============================== USERS ==============================
 
 model User {
-  id           String   @id @default(cuid()) @map("_id")
+  id           String   @id @default(cuid())
   name         String
   email        String   @unique
   passwordHash String
@@ -33,9 +33,9 @@ model User {
 }
 
 model Address {
-  id        String   @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   label     String   @default("Home")
   fullText  String
   city      String
@@ -50,7 +50,7 @@ model Address {
 // ============================== CATALOG ==============================
 
 model Category {
-  id          String   @id @default(cuid()) @map("_id")
+  id          String   @id @default(cuid())
   name        String
   slug        String   @unique
   description String?
@@ -63,7 +63,7 @@ model Category {
 }
 
 model Product {
-  id           String   @id @default(cuid()) @map("_id")
+  id           String   @id @default(cuid())
   name         String
   slug         String   @unique
   description  String
@@ -94,9 +94,9 @@ model Product {
 }
 
 model ProductImage {
-  id        String  @id @default(cuid()) @map("_id")
+  id        String  @id @default(cuid())
   productId String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
   url       String
   alt       String?
   sortOrder Int     @default(0)
@@ -105,11 +105,11 @@ model ProductImage {
 // ============================== CART ==============================
 
 model CartItem {
-  id          String   @id @default(cuid()) @map("_id")
+  id          String   @id @default(cuid())
   userId      String
-  user        User     @relation(fields: [userId], references: [id])
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   productId   String
-  product     Product  @relation(fields: [productId], references: [id])
+  product     Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   quantity    Int      @default(1)
   options     String   @default("[]") // JSON [{label,price}]
   optionsHash String   @default("") // hash for grouping identical customizations
@@ -123,7 +123,7 @@ model CartItem {
 // ============================== ORDERS ==============================
 
 model Order {
-  id            String    @id @default(cuid()) @map("_id")
+  id            String    @id @default(cuid())
   orderNumber   String    @unique
   userId        String
   user          User      @relation(fields: [userId], references: [id])
@@ -154,11 +154,11 @@ model Order {
 }
 
 model OrderItem {
-  id        String   @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid())
   orderId   String
-  order     Order    @relation(fields: [orderId], references: [id])
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
   productId String?
-  product   Product? @relation(fields: [productId], references: [id])
+  product   Product? @relation(fields: [productId], references: [id], onDelete: SetNull)
   // snapshots keep historical orders accurate after menu changes
   name      String
   image     String?
@@ -170,9 +170,9 @@ model OrderItem {
 }
 
 model Payment {
-  id                String   @id @default(cuid()) @map("_id")
+  id                String   @id @default(cuid())
   orderId           String
-  order             Order    @relation(fields: [orderId], references: [id])
+  order             Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
   provider          String   @default("RAZORPAY") // RAZORPAY | RAZORPAY_DEV
   providerOrderId   String?
   providerPaymentId String?
@@ -190,7 +190,7 @@ model Payment {
 // ============================== MARKETING / ENGAGEMENT ==============================
 
 model Coupon {
-  id            String    @id @default(cuid()) @map("_id")
+  id            String    @id @default(cuid())
   code          String    @unique
   description   String?
   type          String // PERCENT | FLAT
@@ -203,17 +203,17 @@ model Coupon {
   usageLimit    Int?
   usedCount     Int       @default(0)
   createdById   String?
-  createdBy     User?     @relation("CouponCreator", fields: [createdById], references: [id])
+  createdBy     User?     @relation("CouponCreator", fields: [createdById], references: [id], onDelete: SetNull)
   createdAt     DateTime  @default(now())
 
 }
 
 model Review {
-  id         String   @id @default(cuid()) @map("_id")
+  id         String   @id @default(cuid())
   userId     String
-  user       User     @relation(fields: [userId], references: [id])
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   productId  String
-  product    Product  @relation(fields: [productId], references: [id])
+  product    Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   orderId    String?
   rating     Int
   title      String?
@@ -225,24 +225,24 @@ model Review {
 }
 
 model Favorite {
-  id        String   @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid())
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   productId String
-  product   Product  @relation(fields: [productId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
 
   @@unique([userId, productId])
 }
 
 model NewsletterSubscriber {
-  id        String   @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid())
   email     String   @unique
   createdAt DateTime @default(now())
 }
 
 model ContactMessage {
-  id        String   @id @default(cuid()) @map("_id")
+  id        String   @id @default(cuid())
   userId    String?
   name      String
   email     String
@@ -256,7 +256,7 @@ model ContactMessage {
 
 // Singleton settings row (id = "main")
 model RestaurantSettings {
-  id                    String   @id @default("main") @map("_id")
+  id                    String   @id @default("main")
   deliveryFee           Int      @default(3900) // paise ₹39
   freeDeliveryThreshold Int      @default(59900) // paise ₹599
   taxPercent            Float    @default(5) // GST %
