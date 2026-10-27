@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
@@ -216,19 +216,12 @@ export default function Navbar() {
 
 /** tiny wrapper to derive current hash path without rerenders on query change */
 function usePathnameSafe() {
-  const [path, setPath] = useState('/')
-  const ref = useRef<string>('/')
-  useEffect(() => {
-    const update = () => {
-      const h = window.location.hash.replace(/^#/, '').split('?')[0] || '/'
-      if (h !== ref.current) {
-        ref.current = h
-        setPath(h)
-      }
-    }
-    update()
-    window.addEventListener('hashchange', update)
-    return () => window.removeEventListener('hashchange', update)
-  }, [])
-  return path
+  return useSyncExternalStore(
+    (callback) => {
+      window.addEventListener('hashchange', callback)
+      return () => window.removeEventListener('hashchange', callback)
+    },
+    () => (typeof window !== 'undefined' ? window.location.hash.replace(/^#/, '').split('?')[0] || '/' : '/'),
+    () => '/'
+  )
 }

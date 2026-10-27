@@ -33,8 +33,16 @@ const SSR_ROUTE: RouteInfo = { segments: [], query: new URLSearchParams(), raw: 
       for (const method of ['pushState', 'replaceState'] as const) {
         const orig = history[method].bind(history) as (...args: unknown[]) => void
         history[method] = ((...args: unknown[]) => {
+          const prevHash = window.location.hash
           orig(...args)
-          window.dispatchEvent(new Event('hashchange'))
+          const nextHash = window.location.hash
+          if (prevHash !== nextHash) {
+            // Defer dispatch to a macrotask so event handlers calling setState
+            // never run synchronously inside React's useInsertionEffect or render phases.
+            setTimeout(() => {
+              window.dispatchEvent(new Event('hashchange'))
+            }, 0)
+          }
         }) as typeof history[typeof method]
       }
     }
@@ -52,9 +60,14 @@ export function useHashRoute(): RouteInfo {
   const [route, setRoute] = useState<RouteInfo>(SSR_ROUTE)
 
   useEffect(() => {
+    let prevPath = window.location.hash.replace(/^#/, '').split('?')[0]
     const onChange = () => {
       setRoute(parseHash(window.location.hash))
-      window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+      const nextPath = window.location.hash.replace(/^#/, '').split('?')[0]
+      if (prevPath !== nextPath) {
+        prevPath = nextPath
+        window.scrollTo({ top: 0, behavior: 'instant' as ScrollBehavior })
+      }
     }
     onChange()
     window.addEventListener('hashchange', onChange)
